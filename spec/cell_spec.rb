@@ -39,6 +39,9 @@ RSpec.describe Cell do
       
     end
   end
+
+
+  
 end
 
 #stopped before 'render' method
