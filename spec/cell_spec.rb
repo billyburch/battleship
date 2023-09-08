@@ -34,7 +34,6 @@ RSpec.describe Cell do
       expect(@cell.fired_upon?).to be false
       @cell.fire_upon
       expect(@cell.ship.health).to eq(2)
-      require 'pry'; binding.pry
       expect(@cell.fired_upon?).to be true
       
     end
@@ -45,6 +44,7 @@ RSpec.describe Cell do
       cell_1 = Cell.new("B4")
       expect(cell_1.render).to eq(".")
       cell_1.fire_upon
+      # require 'pry'; binding.pry
       expect(cell_1.render).to eq("M")
       cell_2 = Cell.new("C3")
       cell_2.place_ship(@cruiser)
@@ -53,12 +53,11 @@ RSpec.describe Cell do
       cell_2.fire_upon
       expect(cell_2.render).to eq("H")
       expect(@cruiser.sunk?).to be false
-      cruiser.hit
-      cruiser.hit
+      @cruiser.hit
+      @cruiser.hit
+      # require 'pry'; binding.pry
       expect(@cruiser.sunk?).to be true
       expect(cell_2.render).to eq("X")
     end
   end
 end
-
-#stopped before 'render' method
