@@ -38,6 +38,7 @@ RSpec.describe Cell do
       
     end
   end
+  
   describe '#render' do
     it 'returns string representation of cell' do
       cell_1 = Cell.new("B4")
