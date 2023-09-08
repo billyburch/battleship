@@ -2,7 +2,6 @@ require 'spec_helper'
 
 RSpec.describe Ship do
   before(:each) do
-    @cruiser = Ship.new("Cruiser", 3)
   end
 
   describe '#initialize' do
@@ -15,13 +14,13 @@ RSpec.describe Ship do
   end
 
   describe '#sunk?' do
-    xit 'defaults to false' do
+    it 'defaults to false' do
       expect(@cruiser.sunk?).to be false
     end
   end
 
   describe '#hit' do
-    xit 'takes a hit and subtracts from health' do
+    it 'takes hits, subtracts from health, sinks' do
       @cruiser.hit
       expect(@cruiser.health).to eq(2)
       @cruiser.hit
@@ -33,4 +32,3 @@ RSpec.describe Ship do
   end
 end
 
-# stops before 'Cell'
