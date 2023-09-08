@@ -7,7 +7,7 @@ RSpec.describe Cell do
   end
 
   describe '#initialize' do
-    xit 'exists' do
+    it 'exists' do
       expect(@cell).to be_a(Cell)
       expect(@cell.coordinate).to eq("B4")
       expect(@cell.ship).to eq(nil)
@@ -15,26 +15,28 @@ RSpec.describe Cell do
   end
 
   describe '#empty?' do
-    xit 'defaults to true' do
+    it 'defaults to true' do
       expect(@cell.empty?).to be true
     end
   end
 
   describe '#place_ship' do
-    xit 'places a ship on the cell' do
+    it 'places a ship on the cell' do
       @cell.place_ship(@cruiser)
-      expect(@cell.ship).to be_a(Ship)
+      expect(@cell.ship).to eq(@cruiser)
       expect(@cell.empty?).to be false
     end
   end
 
   describe '#fired_upon?' do
-    xit 'fired_upon defaults false'
+    it 'fired_upon defaults false' do
       @cell.place_ship(@cruiser)
       expect(@cell.fired_upon?).to be false
       @cell.fire_upon
       expect(@cell.ship.health).to eq(2)
+      require 'pry'; binding.pry
       expect(@cell.fired_upon?).to be true
+      
     end
   end
 end
