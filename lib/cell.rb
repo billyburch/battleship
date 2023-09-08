@@ -17,11 +17,6 @@ class Cell
 
   def fired_upon?
     @fired_upon
-    # if @fire_upon 
-    #   true
-    # else
-    #   false
-    # end
   end
   
   def fire_upon
