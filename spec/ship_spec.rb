@@ -15,13 +15,13 @@ RSpec.describe Ship do
   end
 
   describe '#sunk?' do
-    xit 'defaults to false' do
+    it 'defaults to false' do
       expect(@cruiser.sunk?).to be false
     end
   end
 
   describe '#hit' do
-    xit 'takes a hit and subtracts from health' do
+    it 'takes hits, subtracts from health, sinks' do
       @cruiser.hit
       expect(@cruiser.health).to eq(2)
       @cruiser.hit
