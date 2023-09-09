@@ -5,19 +5,12 @@ RSpec.describe Board do
     @board = Board.new
   end
 
-  describe '#initialize' do
-    it 'exists' do
-      expect(@board).to be_a(Board)
-      .
-    end
-  end
-
   describe '#cells' do
     it 'returns a hash' do
       expect(@board.cells).to be_a(Hash)
       expect(@board.cells.length).to eq(16)
-      expect(@board.cells.values).to be_a(Cell)
-      
+      expect(@board.cells.values.first).to be_a(Cell)
+      expect(@board.cells.values[2]).to be_a(Cell)
     end
   end
 
