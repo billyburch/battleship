@@ -14,34 +14,64 @@ class Board
     }
   end
 
-  def valid_coordinate?(cell_block)
-    if @cells.keys.include?(cell_block)
+  def valid_coordinate?(coordinate)
+    @cells.key?(coordinate)
+  end
+
+  def get_letters(ship, coordinates)
+    coordinates.map do |coordinate|
+      coordinate[0]
+    end
+  end
+
+  def get_numbers(ship, coordinates)
+    coordinates.map do |coordinate|
+      coordinate[1].to_i
+    end
+  end
+
+  def same_row?(ship, coordinates)
+    letters = get_letters(ship, coordinates)
+    letters.uniq.length == 1
+  end
+
+  def same_column?(ship, coordinates)
+    numbers = get_numbers(ship, coordinates)
+    numbers.uniq.length == 1
+  end
+  
+  def consecutive_numbers?(ship, coordinates)
+    con_numbers = get_numbers(ship, coordinates)
+    range = con_numbers[0]..con_numbers[-1]
+    con_numbers == range.to_a
+  end
+  
+  def consecutive_letters?(ship, coordinates)
+    con_letters = get_letters(ship, coordinates)
+    range = con_letters.map do |letter|
+      letter.ord
+    end[0]..con_letters.map do |letter|
+      letter.ord
+    end[-1]
+    con_letters.map do |letter|
+      letter.ord
+    end == range.to_a
+  end
+
+
+  def valid_placement?(ship, coordinates)
+    if 
+      ship.length == coordinates.length &&
+      same_row?(ship, coordinates) &&
+      consecutive_numbers?(ship, coordinates)
+      true
+    elsif
+      ship.length == coordinates.length &&
+      same_column?(ship, coordinates) &&
+      consecutive_letters?(ship, coordinates)
       true
     else
       false
     end
   end
-
-  
-
-
-  # def split_elements(ship, coordinates)
-  #   split_string = coordinates.map do |coord|
-  #     characters = []
-  #     coord.each_char do |char|
-  #       characters << char
-  #     end
-  #     characters
-  #   end
-  # end
-
-  # def letters
-  #   first_element = characters.map do |letter|
-  #     letter[0]
-  # end
-
-  def valid_placement?(ship, coordinates)
-    ship.length == coordinates.length
-  end
-
 end
