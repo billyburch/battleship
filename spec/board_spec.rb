@@ -30,25 +30,34 @@ RSpec.describe Board do
   describe '#valid_placement?' do
     it 'number of coordinates equals ship length' do
       expect(@board.valid_placement?(@cruiser, ["A1", "A2"])).to be false
-      expect(@board.valid_placement?(@submarine, ["A2", "A3", "A4"]))
-      .to be false
+      expect(@board.valid_placement?(@submarine, ["A2", "A3", "A4"])).to be false
     end
 
-    xit 'splits string elements into letters/numbers' do
-      expect(@board.split_elements(@cruiser, ["A1", "A2"])).to eq([["A", "1"], ["A", "2"]])
-      expect(@board.split_elements(@cruiser, ["A1", "C4"])).to eq([["A", "1"], ["C", "4"]])
-    end
-
-    xit 'coordinates are consecutive' do
+    it 'coordinates are consecutive' do
       expect(@board.valid_placement?(@cruiser, ["A1", "A2", "A4"])).to be false
       expect(@board.valid_placement?(@submarine, ["A1", "C1"])).to be false
       expect(@board.valid_placement?(@cruiser, ["A3", "A2", "A1"])).to be false
       expect(@board.valid_placement?(@submarine, ["C1", "B1"])).to be false
+      expect(@board.valid_placement?(@cruiser, ["A1", "A2", "A3"])).to be true
     end
 
-    xit 'coordinates are not diagonal' do
+    it 'coordinates are not diagonal' do
       expect(@board.valid_placement?(@cruiser, ["A1", "B2", "C3"])).to be false
       expect(@board.valid_placement?(@submarine, ["C2", "D3"])).to be false
     end
   end
+
+  describe '#place' do
+    xit 'places a ship on the board in given cells' do
+      board.place(cruiser, ["A1", "A2", "A3"]) 
+      cell_1 = board.cells["A1"]
+      cell_2 = board.cells["A2"]
+      cell_3 = board.cells["A3"]
+      expect(cell_1.ship).to be_a(@cruiser)
+      expect(cell_2.ship).to be_a(@cruiser)
+      expect(cell_3.ship).to be_a(@cruiser)
+      expect(cell_3.ship == cell_2.ship).to be true
+    end
+  end
+
 end

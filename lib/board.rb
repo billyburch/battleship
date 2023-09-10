@@ -14,37 +14,9 @@ class Board
     }
   end
 
-  def valid_coordinate?(cell_block)
-    if @cells.keys.include?(cell_block)
-      true
-    else
-      false
-    end
+  def valid_coordinate?(coordinate)
+    @cells.key?(coordinate)
   end
 
-  
 
-
-  # def split_elements(ship, coordinates)
-  #   split_string = coordinates.map do |coord|
-  #     characters = []
-  #     coord.each_char do |char|
-  #       characters << char
-  #     end
-  #     characters
-  #   end
-  # end
-
-  # def letters
-  #   first_element = characters.map do |letter|
-  #     letter[0]
-  # end
-
-  def valid_placement?(ship, coordinates)
-    ship.length == coordinates.length
-  end
-
-  end
-
-  
 end
