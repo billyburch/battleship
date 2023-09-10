@@ -12,7 +12,36 @@ class Board
       "D1" => Cell.new('D1'), "D2" => Cell.new('D2'),
       "D3" => Cell.new('D3'), "D4" => Cell.new('D4') 
     }
-    
-
   end
+
+  def valid_coordinate?(cell_block)
+    if @cells.keys.include?(cell_block)
+      true
+    else
+      false
+    end
+  end
+
+  
+
+
+  # def split_elements(ship, coordinates)
+  #   split_string = coordinates.map do |coord|
+  #     characters = []
+  #     coord.each_char do |char|
+  #       characters << char
+  #     end
+  #     characters
+  #   end
+  # end
+
+  # def letters
+  #   first_element = characters.map do |letter|
+  #     letter[0]
+  # end
+
+  def valid_placement?(ship, coordinates)
+    ship.length == coordinates.length
+  end
+
 end
