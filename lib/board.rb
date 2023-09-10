@@ -59,6 +59,7 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
+    # make sure each cell does not have a ship
     if 
       ship.length == coordinates.length &&
       same_row?(ship, coordinates) &&
@@ -67,10 +68,16 @@ class Board
     elsif
       ship.length == coordinates.length &&
       same_column?(ship, coordinates) &&
-      consecutive_letters?(ship, coordinates)
+      consecutive_letters?(ship, coordinates) 
       true
     else
       false
+    end
+  end
+
+  def place(ship, coordinates)
+    coordinates.each do |coord|
+      @cells[coord].place_ship(ship)
     end
   end
 
