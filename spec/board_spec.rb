@@ -104,6 +104,8 @@ RSpec.describe Board do
       cell_1 = @board.cells["A1"]
       cell_2 = @board.cells["A2"]
       cell_3 = @board.cells["A3"]
+      require 'pry'; binding.pry
+
       expect(@board.valid_placement?(@submarine, ["A1", "B1"])).to be false
     end
   end
@@ -113,7 +115,6 @@ RSpec.describe Board do
      @board.place(@cruiser, ["A1", "A2", "A3"])
       expect(@board.render).to be_a(String)
       expect(@board.render(true)).to be_a(String)
-    
     end
   end
 

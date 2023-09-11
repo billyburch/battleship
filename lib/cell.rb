@@ -39,6 +39,5 @@ class Cell
     else !@fired_upon
       return "."
     end
-    
   end
 end
