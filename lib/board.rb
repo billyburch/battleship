@@ -58,7 +58,7 @@ class Board
     end == range.to_a
   end
 
-  def no_overlap?(ship, coordinates)
+  def overlap?(ship, coordinates)
     coordinates.any? do |coord|
       @cells[coord].ship
     end
@@ -66,13 +66,13 @@ class Board
 
   def valid_placement?(ship, coordinates)
     if 
-      !no_overlap?(ship, coordinates) &&
+      !overlap?(ship, coordinates) &&
       ship.length == coordinates.length &&
       same_row?(ship, coordinates) &&
       consecutive_numbers?(ship, coordinates)
       true
     elsif
-      !no_overlap?(ship, coordinates) &&
+      !overlap?(ship, coordinates) &&
       ship.length == coordinates.length &&
       same_column?(ship, coordinates) &&
       consecutive_letters?(ship, coordinates)

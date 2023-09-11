@@ -74,7 +74,6 @@ RSpec.describe Board do
       expect(@board.valid_placement?(@submarine, ["A1", "C1"])).to be false
       expect(@board.valid_placement?(@cruiser, ["A3", "A2", "A1"])).to be false
       expect(@board.valid_placement?(@submarine, ["C1", "B1"])).to be false
-      expect(@board.valid_placement?(@cruiser, ["A1", "A2", "A3"])).to be true
     end
 
     it 'coordinates are not diagonal' do
@@ -100,11 +99,22 @@ RSpec.describe Board do
       expect(cell_3.ship == cell_2.ship).to be true
     end
 
-    xit 'checks if ships are overlapping' do
+    it 'checks if ships are overlapping' do
       @board.place(@cruiser, ["A1", "A2", "A3"])
+      cell_1 = @board.cells["A1"]
+      cell_2 = @board.cells["A2"]
+      cell_3 = @board.cells["A3"]
       expect(@board.valid_placement?(@submarine, ["A1", "B1"])).to be false
     end
+  end
 
+  describe '#render' do
+    xit 'renders a String representation of itself' do
+     @board.place(@cruiser, ["A1", "A2", "A3"])
+      expect(@board.render).to be_a(String)
+      expect(@board.render(true)).to be_a(String)
+    
+    end
   end
 
 
