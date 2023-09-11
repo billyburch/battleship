@@ -8,7 +8,4 @@ RSpec.describe Game do
     @submarine = Ship.new("Submarine", 2)
   end
 
-  
-
-
-end
+ 
