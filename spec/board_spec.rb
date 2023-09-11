@@ -116,10 +116,12 @@ RSpec.describe Board do
       cell_1 = @board.cells["A1"]
       cell_2 = @board.cells["A2"]
       cell_3 = @board.cells["A3"]
-     expected_value = "  1 2 3 4 \nA....\nB....\nC....\nD....\n"
-     expected_value_true = "  1 2 3 4 \nASSS.\nB....\nC....\nD....\n"
+      expected_value = "  1 2 3 4 \nA....\nB....\nC....\nD....\n"
+      expected_value_true = "  1 2 3 4 \nASSS.\nB....\nC....\nD....\n"
       expect(@board.render).to eq(expected_value)
       expect(@board.render(true)).to eq(expected_value_true)
+      
+      
       # @board.place(@submarine, ["B1", "B2"])
       # cell_4 = @board.cells["B1"]
       # cell_5 = @board.cells["B2"]
