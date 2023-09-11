@@ -8,11 +8,11 @@ class Player
 
   def valid_cruiser_placement
     puts "Enter the squares for the Cruiser (3 spaces):"
-    player_input = gets.chomp.split(" ").to_a 
+    player_input = gets.chomp.upcase.split(" ").to_a 
     until board.valid_placement?(@cruiser, player_input)
       puts "Those are invalid coordinates. Please try again:" unless board.valid_placement?(@cruiser, player_input)
       puts "Enter the squares for the Cruiser (3 spaces):"
-      player_input = gets.chomp.split(" ").to_a
+      player_input = gets.chomp.upcase.split(" ").to_a
     end
     print "You have placed your Cruiser on #{player_input}.\n"
     player_input
@@ -20,11 +20,11 @@ class Player
 
   def valid_submarine_placement
     puts "Enter the squares for the Submarine (2 spaces):"
-    player_input = gets.chomp.split(" ").to_a 
+    player_input = gets.chomp.upcase.split(" ").to_a 
     until board.valid_placement?(@submarine, player_input)
       puts "Those are invalid coordinates. Please try again:" unless board.valid_placement?(@submarine, player_input)
       puts "Enter the squares for the Submarine (2 spaces):"
-      player_input = gets.chomp.split(" ").to_a
+      player_input = gets.chomp.upcase.split(" ").to_a
     end
     print "You have placed your Submarine on #{player_input}.\n"
     player_input
