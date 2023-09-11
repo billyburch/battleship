@@ -118,9 +118,9 @@ RSpec.describe Board do
      expected_value_true = "  1 2 3 4 \nASSS.\nB....\nC....\nD....\n"
       expect(@board.render).to eq(expected_value)
       expect(@board.render(true)).to eq(expected_value_true)
-      @board.place(@submarine, ["B1", "B2"])
-      cell_4 = @board.cells["B1"]
-      cell_5 = @board.cells["B2"]
+      # @board.place(@submarine, ["B1", "B2"])
+      # cell_4 = @board.cells["B1"]
+      # cell_5 = @board.cells["B2"]
       # add tests for hits misses and sunken ships to mimick gameplay
     end
   end
