@@ -109,19 +109,65 @@ RSpec.describe Board do
   end
 
   describe '#render' do
-    it 'renders a String representation of itself' do
-     @board.place(@cruiser, ["A1", "A2", "A3"])
+    it 'renders an empty board' do
+     expected_output = "  1 2 3 4 \n" +
+                       "A . . . . \n" +
+                       "B . . . . \n" +
+                       "C . . . . \n" +
+                       "D . . . . \n"
+      expect(@board.render).to eq(expected_output)
+    end
+
+    it 'renders a board with ships' do
+      @board.place(@cruiser, ["A1", "A2", "A3"])
+      expected_output = "  1 2 3 4 \n" +
+                        "A S S S . \n" +
+                        "B . . . . \n" +
+                        "C . . . . \n" +
+                        "D . . . . \n"
+      expect(@board.render(true)).to eq(expected_output)
+    end
+
+    it 'mimicks gameplay not showing ships' do
+      @board.place(@cruiser, ["A1", "A2", "A3"])
+      @board.place(@submarine, ["C1", "D1"])
       cell_1 = @board.cells["A1"]
       cell_2 = @board.cells["A2"]
       cell_3 = @board.cells["A3"]
-     expected_value = "  1 2 3 4 \nA....\nB....\nC....\nD....\n"
-     expected_value_true = "  1 2 3 4 \nASSS.\nB....\nC....\nD....\n"
-      expect(@board.render).to eq(expected_value)
-      expect(@board.render(true)).to eq(expected_value_true)
-      # @board.place(@submarine, ["B1", "B2"])
-      # cell_4 = @board.cells["B1"]
-      # cell_5 = @board.cells["B2"]
-      # add tests for hits misses and sunken ships to mimick gameplay
+      cell_8 = @board.cells["B4"]
+      cell_9 = @board.cells["C1"]
+      cell_13 = @board.cells["D1"]
+      cell_1.fire_upon
+      cell_8.fire_upon
+      cell_9.fire_upon
+      cell_13.fire_upon
+      expected_output = "  1 2 3 4 \n" +
+                        "A H . . . \n" +
+                        "B . . . M \n" +
+                        "C X . . . \n" +
+                        "D X . . . \n"
+      expect(@board.render).to eq(expected_output)
+    end
+
+    it 'mimicks gameplay not showing ships' do
+      @board.place(@cruiser, ["A1", "A2", "A3"])
+      @board.place(@submarine, ["C1", "D1"])
+      cell_1 = @board.cells["A1"]
+      cell_2 = @board.cells["A2"]
+      cell_3 = @board.cells["A3"]
+      cell_8 = @board.cells["B4"]
+      cell_9 = @board.cells["C1"]
+      cell_13 = @board.cells["D1"]
+      cell_1.fire_upon
+      cell_8.fire_upon
+      cell_9.fire_upon
+      cell_13.fire_upon
+      expected_output = "  1 2 3 4 \n" +
+                        "A H S S . \n" +
+                        "B . . . M \n" +
+                        "C X . . . \n" +
+                        "D X . . . \n"
+      expect(@board.render(true)).to eq(expected_output)
     end
   end
 end
