@@ -151,7 +151,7 @@ RSpec.describe Board do
       expect(@board.render).to eq(expected_output)
     end
 
-    it 'mimicks gameplay not showing ships' do
+    it 'mimicks gameplay showing ships' do
       @board.place(@cruiser, ["A1", "A2", "A3"])
       @board.place(@submarine, ["C1", "D1"])
       cell_1 = @board.cells["A1"]
