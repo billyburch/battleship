@@ -109,13 +109,19 @@ RSpec.describe Board do
   end
 
   describe '#render' do
-    xit 'renders a String representation of itself' do
+    it 'renders a String representation of itself' do
      @board.place(@cruiser, ["A1", "A2", "A3"])
-      expect(@board.render).to be_a(String)
-      expect(@board.render(true)).to be_a(String)
-    
+      cell_1 = @board.cells["A1"]
+      cell_2 = @board.cells["A2"]
+      cell_3 = @board.cells["A3"]
+     expected_value = "  1 2 3 4 \nA....\nB....\nC....\nD....\n"
+     expected_value_true = "  1 2 3 4 \nASSS.\nB....\nC....\nD....\n"
+      expect(@board.render).to eq(expected_value)
+      expect(@board.render(true)).to eq(expected_value_true)
+      # @board.place(@submarine, ["B1", "B2"])
+      # cell_4 = @board.cells["B1"]
+      # cell_5 = @board.cells["B2"]
+      # add tests for hits misses and sunken ships to mimick gameplay
     end
   end
-
-
 end
