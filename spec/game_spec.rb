@@ -2,13 +2,13 @@ require 'spec_helper'
 
 RSpec.describe Game do 
   before(:each) do
-    @board = Board.new
-    @cell = Cell.new("B4")
-    @cruiser = Ship.new("Cruiser", 3)
-    @submarine = Ship.new("Submarine", 2)
+    @game = Game.new
   end
 
-  
-
+  it 'exists and has players' do
+    expect(@game).to be_a(Game)
+    expect(@game.player).to be_a(Player)
+    expect(@game.computer).to be_a(Computer)
+  end
 
 end
