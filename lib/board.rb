@@ -94,10 +94,11 @@ class Board
     end
     header = "  1 2 3 4 \n"
     new_rows = rendered_cells.each_slice(4).to_a
-    row_1 = "A" + new_rows[0].join + "\n"
-    row_2 ="B" + new_rows[1].join + "\n"
-    row_3 = "C" + new_rows[2].join + "\n"
-    row_4 ="D" + new_rows[3].join + "\n"
+    row_1 = "A " + new_rows[0].join(" ") + " \n"
+    row_2 ="B " + new_rows[1].join(" ") + " \n"
+    row_3 = "C " + new_rows[2].join(" ") + " \n"
+    row_4 ="D " + new_rows[3].join(" ") + " \n"
     header + row_1 + row_2 + row_3 + row_4
   end
+
 end
