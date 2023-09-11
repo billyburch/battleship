@@ -1,6 +1,6 @@
 class Cell
-  attr_accessor :coordinate
-  attr_reader :ship, :fired_upon
+  attr_accessor :coordinate, :ship
+  attr_reader :fired_upon
 
   def initialize(coordinate)
     @coordinate = coordinate
@@ -27,10 +27,11 @@ class Cell
     end
   end
 
+
   def render(reveal_ship = false)
     return "S" if reveal_ship == true
     if @fired_upon and @ship.nil?
-      return "M"
+     return "M"
     elsif @fired_upon and !@ship.nil? and !@ship.sunk?
       return "H"
     elsif @fired_upon and @ship.sunk?
@@ -38,5 +39,6 @@ class Cell
     else !@fired_upon
       return "."
     end
+    
   end
 end

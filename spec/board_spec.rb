@@ -30,8 +30,7 @@ RSpec.describe Board do
   describe '#valid_placement?' do
     it 'number of coordinates equals ship length' do
       expect(@board.valid_placement?(@cruiser, ["A1", "A2"])).to be false
-      expect(@board.valid_placement?(@submarine, ["A2", "A3", "A4"]))
-      .to be false
+      expect(@board.valid_placement?(@submarine, ["A2", "A3", "A4"])).to be false
     end
 
     #tests with map and uniq methods/enumerables
@@ -89,16 +88,34 @@ RSpec.describe Board do
   end
 
   describe '#place' do
-    xit 'places a ship on the board in given cells' do
-      board.place(cruiser, ["A1", "A2", "A3"])
-      cell_1 = board.cells["A1"]
-      cell_2 = board.cells["A2"]
-      cell_3 = board.cells["A3"]
-      expect(cell_1.ship).to be_a(@cruiser)
-      expect(cell_2.ship).to be_a(@cruiser)
-      expect(cell_3.ship).to be_a(@cruiser)
+    it 'places a ship on the board in given cells' do
+      @board.place(@cruiser, ["A1", "A2", "A3"])
+      expect(cell_1 = @board.cells["A1"]).to be_a(Cell)
+      expect(cell_2 = @board.cells["A2"]).to be_a(Cell)
+      expect(cell_3 = @board.cells["A3"]).to be_a(Cell)
+      expect(cell_1.ship).to be_a(Ship)
+      expect(cell_2.ship).to be_a(Ship)
+      expect(cell_3.ship).to be_a(Ship)
       expect(cell_3.ship == cell_2.ship).to be true
     end
+
+    it 'checks if ships are overlapping' do
+      @board.place(@cruiser, ["A1", "A2", "A3"])
+      cell_1 = @board.cells["A1"]
+      cell_2 = @board.cells["A2"]
+      cell_3 = @board.cells["A3"]
+      expect(@board.valid_placement?(@submarine, ["A1", "B1"])).to be false
+    end
   end
+
+  describe '#render' do
+    xit 'renders a String representation of itself' do
+     @board.place(@cruiser, ["A1", "A2", "A3"])
+      expect(@board.render).to be_a(String)
+      expect(@board.render(true)).to be_a(String)
+    
+    end
+  end
+
 
 end
