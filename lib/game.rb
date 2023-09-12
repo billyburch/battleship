@@ -73,21 +73,21 @@ class Game
     end
   end
 
-#I've been trying to figure out the below method and can't get past our fired_upon? fired_upon and fire_upon methods. 
+#I've finally figured out the below method and just need to make things loop so we can get to an end of game.
 
-  # def computer_aim_fire
-  #   cell = @player.board.cells.values.sample.coordinate
-  #   until @player.board.cells.values.fired_upon == false do
-  #     cell = @player.board.cells.values.sample.coordinate
-  #   end
-  #   cell.fire_upon
-  #   if cell.ship == nil
-  #     puts "My shot on #{cell} was a miss."
-  #   elsif cell.ship != nil
-  #     puts "My shot on #{cell} was a hit."
-  #     if cell.ship.sunk?
-  #       puts "I sunk your #{@player.board.cells[player_input].ship.name}!"
-  #     end
-  #   end
-  # end
+  def computer_aim_fire
+    cell = @player.board.cells.values.sample
+    until @player.board.cells.values.sample.fired_upon == false do
+      cell = @player.board.cells.values.sample
+    end
+    cell.fire_upon
+    if cell.ship == nil
+      puts "My shot on #{cell.coordinate} was a miss."
+    elsif cell.ship != nil
+      puts "My shot on #{cell.coordinate} was a hit."
+      if cell.ship.sunk?
+        puts "I sunk your #{cells[player_input].ship.name}!"
+      end
+    end
+  end
 end
