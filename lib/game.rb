@@ -48,10 +48,11 @@ class Game
     puts @computer.board.render
     puts "==============PLAYER BOARD=============="
     puts @player.board.render(true)
-   ready_aim_fire
+    player_aim_fire
+    computer_aim_fire
   end
 
-  def ready_aim_fire
+  def player_aim_fire
     puts "\nEnter the coordinate for your shot:"
     player_input = gets.chomp.upcase
     until @computer.board.valid_coordinate?(player_input) && @computer.board.cells[player_input].fired_upon? == false
@@ -71,4 +72,22 @@ class Game
       end
     end
   end
-end 
+
+#I've been trying to figure out the below method and can't get past our fired_upon? fired_upon and fire_upon methods. 
+
+  # def computer_aim_fire
+  #   cell = @player.board.cells.values.sample.coordinate
+  #   until @player.board.cells.values.fired_upon == false do
+  #     cell = @player.board.cells.values.sample.coordinate
+  #   end
+  #   cell.fire_upon
+  #   if cell.ship == nil
+  #     puts "My shot on #{cell} was a miss."
+  #   elsif cell.ship != nil
+  #     puts "My shot on #{cell} was a hit."
+  #     if cell.ship.sunk?
+  #       puts "I sunk your #{@player.board.cells[player_input].ship.name}!"
+  #     end
+  #   end
+  # end
+end
