@@ -1,9 +1,3 @@
-require './lib/cell'
-require './lib/ship'
-require './lib/board'
-require './lib/player'
-require './lib/computer'
-
 class Game
   attr_reader :player, :computer
   def initialize
@@ -88,7 +82,8 @@ class Game
 
   def computer_aim_fire
     cell = @player.board.cells.values.sample
-    until @player.board.cells.values.sample.fired_upon == false do
+    while cell.fired_upon? do
+    # until !@player.board.cells.values.sample.fired_upon? do
       cell = @player.board.cells.values.sample
     end
     cell.fire_upon

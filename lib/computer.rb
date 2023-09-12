@@ -1,8 +1,3 @@
-require './lib/cell'
-require './lib/ship'
-require './lib/board'
-require './lib/player'
-
 class Computer 
   attr_reader :board, :cruiser, :submarine
   def initialize 
