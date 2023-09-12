@@ -61,6 +61,7 @@ class Game
     elsif player_loss
       print "I won! \n"
     end
+    start
   end
   
   def player_aim_fire
