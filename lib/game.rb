@@ -84,7 +84,6 @@ class Game
     end
   end
 
-#I've finally figured out the below method and just need to make things loop so we can get to an end of game.
 
   def computer_aim_fire
     cell = @player.board.cells.values.sample
@@ -97,7 +96,6 @@ class Game
     elsif cell.ship != nil
       puts "My shot on #{cell.coordinate} was a hit."
       if cell.ship.sunk?
-        # require 'pry'; binding.pry
         puts "I sunk your #{cell.ship.name}!"
       end
     end
