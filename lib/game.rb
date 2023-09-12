@@ -37,9 +37,11 @@ class Game
   end
 
   def play_game
+    puts "\n\nLET'S PLAY!\n\n"
     puts "=============COMPUTER BOARD============="
     puts @computer.board.render
     puts "==============PLAYER BOARD=============="
     puts @player.board.render(true)
+    @player.ready_aim_fire
   end
 end 
