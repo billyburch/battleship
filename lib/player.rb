@@ -1,3 +1,8 @@
+require './lib/cell'
+require './lib/ship'
+require './lib/board'
+require './lib/computer'
+
 class Player
   attr_reader :board, :cruiser, :submarine
   def initialize
@@ -43,27 +48,4 @@ class Player
       board.cells[coord].place_ship(@submarine)
     end
   end
-
-  def ready_aim_fire
-    puts "\nEnter the coordinate for your shot:"
-    player_input = gets.chomp.upcase
-    until @board.valid_coordinate?(player_input) && @board.cells[player_input].fired_upon? == false
-      if @board.valid_coordinate?(player_input) && @board.cells[player_input].fired_upon?
-        puts "You have already fired at #{player_input}"
-      end
-      puts "Please enter a valid coordinate: "
-      player_input = gets.chomp.upcase
-    end
-    @board.cells[player_input].fire_upon
-    if @board.cells[player_input].ship == nil
-      puts "Your shot on #{player_input} was a miss."
-    elsif @board.cells[player_input].ship != nil
-      puts "Your shot on #{player_input} was a hit."
-      if @board.cells[player_input].ship.sunk?
-        puts "You sunk my #{@board.cells[player_input].ship.name}!"
-      end
-    end
-  end
-
-
 end

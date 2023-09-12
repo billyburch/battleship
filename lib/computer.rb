@@ -1,3 +1,8 @@
+require './lib/cell'
+require './lib/ship'
+require './lib/board'
+require './lib/player'
+
 class Computer 
   attr_reader :board, :cruiser, :submarine
   def initialize 
@@ -44,6 +49,10 @@ class Computer
       @board.cells[coordinate].place_ship(@submarine)
     end
     coordinates
+  end
+
+  def computer_aim_fire
+
   end
 
 end
