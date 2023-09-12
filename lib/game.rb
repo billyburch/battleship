@@ -15,7 +15,8 @@ class Game
     end
     
     if player_input == "p"
-      setup_ships 
+      setup_ships
+      play_game 
     elsif player_input == "q"
       puts "Goodbye."
     end
@@ -32,6 +33,13 @@ class Game
     @player.place_cruiser
     puts @player.board.render(true)
     @player.place_submarine
+    puts @player.board.render(true)
+  end
+
+  def play_game
+    puts "=============COMPUTER BOARD============="
+    puts @computer.board.render
+    puts "==============PLAYER BOARD=============="
     puts @player.board.render(true)
   end
 end 
