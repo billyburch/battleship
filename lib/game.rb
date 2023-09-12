@@ -53,6 +53,8 @@ class Game
       puts @player.board.render(true)
       player_aim_fire
       computer_aim_fire
+      computer_loss = @computer.cruiser.sunk? == true && @computer.submarine.sunk? == true
+      player_loss = @player.cruiser.sunk? == true && @player.submarine.sunk? == true
     end
     if computer_loss
       print "You won! \n"
@@ -95,7 +97,8 @@ class Game
     elsif cell.ship != nil
       puts "My shot on #{cell.coordinate} was a hit."
       if cell.ship.sunk?
-        puts "I sunk your #{cells[player_input].ship.name}!"
+        # require 'pry'; binding.pry
+        puts "I sunk your #{cell.ship.name}!"
       end
     end
   end

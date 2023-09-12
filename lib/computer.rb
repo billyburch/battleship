@@ -51,8 +51,4 @@ class Computer
     coordinates
   end
 
-  def computer_aim_fire
-
-  end
-
 end
