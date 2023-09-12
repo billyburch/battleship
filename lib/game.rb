@@ -43,15 +43,24 @@ class Game
   end
 
   def play_game
-    puts "\n\nLET'S PLAY!\n\n"
-    puts "=============COMPUTER BOARD============="
-    puts @computer.board.render
-    puts "==============PLAYER BOARD=============="
-    puts @player.board.render(true)
-    player_aim_fire
-    computer_aim_fire
+    computer_loss = @computer.cruiser.sunk? == true && @computer.submarine.sunk? == true
+    player_loss = @player.cruiser.sunk? == true && @player.submarine.sunk? == true
+    until computer_loss || player_loss
+      puts "\n\nLET'S PLAY!\n\n"
+      puts "=============COMPUTER BOARD============="
+      puts @computer.board.render
+      puts "==============PLAYER BOARD=============="
+      puts @player.board.render(true)
+      player_aim_fire
+      computer_aim_fire
+    end
+    if computer_loss
+      print "You won! \n"
+    elsif player_loss
+      print "I won! \n"
+    end
   end
-
+  
   def player_aim_fire
     puts "\nEnter the coordinate for your shot:"
     player_input = gets.chomp.upcase
