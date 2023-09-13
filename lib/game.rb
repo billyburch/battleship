@@ -19,6 +19,7 @@ class Game
       play_game 
     elsif player_input == "q"
       puts "Goodbye."
+      exit
     end
     player_input
   end
@@ -81,9 +82,12 @@ class Game
 
 
   def computer_aim_fire
+    if @computer.cruiser.sunk? && @computer.submarine.sunk?
+      print "You won! \n"
+      start
+    end
     cell = @player.board.cells.values.sample
     while cell.fired_upon? do
-    # until !@player.board.cells.values.sample.fired_upon? do
       cell = @player.board.cells.values.sample
     end
     cell.fire_upon
