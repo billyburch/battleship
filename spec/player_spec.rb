@@ -13,6 +13,4 @@ RSpec.describe Player do
       expect(@player.submarine).to be_a(Ship)
     end
   end
-
-  
 end

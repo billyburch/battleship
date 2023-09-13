@@ -38,8 +38,8 @@ class Game
   end
 
   def play_game
-    computer_loss = @computer.cruiser.sunk? == true && @computer.submarine.sunk? == true
-    player_loss = @player.cruiser.sunk? == true && @player.submarine.sunk? == true
+    computer_loss = @computer.cruiser.sunk? && @computer.submarine.sunk?
+    player_loss = @player.cruiser.sunk? && @player.submarine.sunk?
     until computer_loss || player_loss
       puts "\n\nLET'S PLAY!\n\n"
       puts "=============COMPUTER BOARD============="
@@ -48,8 +48,8 @@ class Game
       puts @player.board.render(true)
       player_aim_fire
       computer_aim_fire
-      computer_loss = @computer.cruiser.sunk? == true && @computer.submarine.sunk? == true
-      player_loss = @player.cruiser.sunk? == true && @player.submarine.sunk? == true
+      computer_loss = @computer.cruiser.sunk? && @computer.submarine.sunk?
+      player_loss = @player.cruiser.sunk? && @player.submarine.sunk?
     end
     if computer_loss
       print "You won! \n"
@@ -62,7 +62,7 @@ class Game
   def player_aim_fire
     puts "\nEnter the coordinate for your shot:"
     player_input = gets.chomp.upcase
-    until @computer.board.valid_coordinate?(player_input) && @computer.board.cells[player_input].fired_upon? == false
+    until @computer.board.valid_coordinate?(player_input) && !@computer.board.cells[player_input].fired_upon?
       if @computer.board.valid_coordinate?(player_input) && @computer.board.cells[player_input].fired_upon?
         puts "You have already fired at #{player_input}"
       end
@@ -79,7 +79,6 @@ class Game
       end
     end
   end
-
 
   def computer_aim_fire
     if @computer.cruiser.sunk? && @computer.submarine.sunk?
