@@ -10,7 +10,7 @@ class Computer
 
   def valid_cruiser_coordinates
     coordinates = []
-    until board.valid_placement?(@cruiser, coordinates) == true
+    until board.valid_placement?(@cruiser, coordinates)
       coordinates = []
       @cruiser.length.times do 
         coordinates << @letters.shuffle.first + @numbers.shuffle.first
@@ -21,7 +21,7 @@ class Computer
 
   def valid_submarine_coordinates
     coordinates = []
-    until board.valid_placement?(@submarine, coordinates) == true
+    until board.valid_placement?(@submarine, coordinates)
       coordinates = []
       @submarine.length.times do 
         coordinates << @letters.shuffle.first + @numbers.shuffle.first

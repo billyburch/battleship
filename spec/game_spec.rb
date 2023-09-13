@@ -10,5 +10,4 @@ RSpec.describe Game do
     expect(@game.player).to be_a(Player)
     expect(@game.computer).to be_a(Computer)
   end
-
 end

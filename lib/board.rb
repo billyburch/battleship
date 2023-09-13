@@ -100,5 +100,4 @@ class Board
     row_4 ="D " + new_rows[3].join(" ") + " \n"
     header + row_1 + row_2 + row_3 + row_4
   end
-
 end

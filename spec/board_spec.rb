@@ -33,8 +33,6 @@ RSpec.describe Board do
       expect(@board.valid_placement?(@submarine, ["A2", "A3", "A4"])).to be false
     end
 
-    #tests with map and uniq methods/enumerables
-
     it 'splits string elements into separate arrays of letters/numbers' do
       expect(@board.get_letters(@cruiser, ["A1", "A2"])).to eq(["A", "A"])
       expect(@board.get_numbers(@cruiser, ["A1", "A2"])).to eq([1, 2])
@@ -45,7 +43,6 @@ RSpec.describe Board do
       expect(@board.consecutive_numbers?(@submarine, ["A1", "C1"])).to be false
       expect(@board.consecutive_numbers?(@cruiser, ["A3", "A2", "A1"])).to be false
       expect(@board.consecutive_numbers?(@submarine, ["C1", "B1"])).to be false
-      #tests for true below
       expect(@board.consecutive_numbers?(@submarine, ["A1", "A2"])).to be true
       expect(@board.consecutive_numbers?(@cruiser, ["A2", "A3", "A4"])).to be true
     end
@@ -55,7 +52,6 @@ RSpec.describe Board do
       expect(@board.consecutive_letters?(@submarine, ["A1", "C1"])).to be false
       expect(@board.consecutive_letters?(@cruiser, ["A3", "A2", "A1"])).to be false
       expect(@board.consecutive_letters?(@submarine, ["C1", "B1"])).to be false
-      #tests for true below
       expect(@board.consecutive_letters?(@submarine, ["A1", "B1"])).to be true
       expect(@board.consecutive_letters?(@cruiser, ["A2", "B2", "C2"])).to be true
     end
